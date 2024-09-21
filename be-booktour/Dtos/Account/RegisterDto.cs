@@ -13,6 +13,9 @@ namespace be_booktour.Dtos.Account
         [Required(ErrorMessage = "Email không được để trống")]
         [EmailAddress(ErrorMessage = "Email không hợp lệ")]
         public string Email { get; set; } // Email
+        [Required(ErrorMessage = "Số điện thoại không được để trống")]
+        [Phone(ErrorMessage = "Số điện thoại không hợp lệ")]
+        public string PhoneNumber { get; set; } // Số điện thoại
         [Required(ErrorMessage = "Mật khẩu không được để trống")]
         [MinLength(12, ErrorMessage = "Mật khẩu phải có ít nhất 12 ký tự")]
         public string Password { get; set; } // Mật khẩu

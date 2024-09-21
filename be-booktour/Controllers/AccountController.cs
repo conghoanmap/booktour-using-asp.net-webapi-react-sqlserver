@@ -36,7 +36,8 @@ namespace be_booktour.Controllers
                 {
                     UserName = registerDto.Username,
                     FullName = registerDto.FullName,
-                    Email = registerDto.Email
+                    Email = registerDto.Email,
+                    PhoneNumber = registerDto.PhoneNumber
                 };
 
                 var createUser = await _accountRepository.CreateAsync(AppUser, registerDto.Password);
