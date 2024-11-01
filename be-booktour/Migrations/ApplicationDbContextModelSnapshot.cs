@@ -51,33 +51,33 @@ namespace be_booktour.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5cf14a2f-2fd1-4bb4-87ff-8bcf3fbb2294",
+                            Id = "90772dec-2fce-4e30-bbe0-26d45232753e",
                             Name = "Customer",
-                            NormalizedName = "Customer"
+                            NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "222f5fc2-ec88-477f-99bd-7ae6e2a83dbe",
+                            Id = "8726aaf7-86ee-419a-af41-dcfbca26354c",
                             Name = "TourManager",
-                            NormalizedName = "Tour Manager"
+                            NormalizedName = "TOURMANAGER"
                         },
                         new
                         {
-                            Id = "586afb5a-44d0-4050-9ed4-ba1b5ef60b39",
+                            Id = "b3511f11-d77c-4428-9623-442f59f4f473",
                             Name = "HotelManager",
-                            NormalizedName = "Hotel Manager"
+                            NormalizedName = "HOTELMANAGER"
                         },
                         new
                         {
-                            Id = "2313e98b-61aa-4f89-a37d-e55a30dd1f6d",
+                            Id = "654dd081-52a3-4de7-aa8f-ce1385260bef",
                             Name = "FlightManager",
-                            NormalizedName = "Flight Manager"
+                            NormalizedName = "FLIGHTMANAGER"
                         },
                         new
                         {
-                            Id = "849fe137-66ce-418a-bbc5-0643029dd7b3",
+                            Id = "3d6c3062-c44d-42f7-829d-722bb263dae1",
                             Name = "Admin",
-                            NormalizedName = "Admin"
+                            NormalizedName = "ADMIN"
                         });
                 });
 
@@ -256,6 +256,387 @@ namespace be_booktour.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("be_booktour.Models.BookTour", b =>
+                {
+                    b.Property<string>("BookTourId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("BookDay")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DepartureDay")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("People")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("TourId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("TourTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BookTourId");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("TourId");
+
+                    b.HasIndex("TourTypeId");
+
+                    b.ToTable("BookTours");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.DepartureDate", b =>
+                {
+                    b.Property<string>("TourId")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("DepartureDay")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("TourId", "DepartureDay");
+
+                    b.ToTable("DepartureDates");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Image", b =>
+                {
+                    b.Property<int>("ImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImageId"));
+
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ImageId");
+
+                    b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Itinerary", b =>
+                {
+                    b.Property<string>("TourId")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Day")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TourId", "Day");
+
+                    b.ToTable("Itineraries");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Location", b =>
+                {
+                    b.Property<int>("LocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LocationId"));
+
+                    b.Property<string>("LocationName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RegionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("LocationId");
+
+                    b.HasIndex("RegionId");
+
+                    b.ToTable("Locations");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.PassengerInfomation", b =>
+                {
+                    b.Property<string>("PassengerInfomationId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BookTourId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PassengerTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("SingleRoom")
+                        .HasColumnType("bit");
+
+                    b.HasKey("PassengerInfomationId");
+
+                    b.HasIndex("BookTourId");
+
+                    b.HasIndex("PassengerTypeId");
+
+                    b.ToTable("PassengerInfomations");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.PassengerType", b =>
+                {
+                    b.Property<int>("PassengerTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PassengerTypeId"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PassengerTypeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PercentPrice")
+                        .HasColumnType("int");
+
+                    b.HasKey("PassengerTypeId");
+
+                    b.ToTable("PassengerTypes");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Payment", b =>
+                {
+                    b.Property<string>("PaymentId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BookTourId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal>("PaidAmount")
+                        .HasColumnType("decimal(18,0)");
+
+                    b.Property<int>("PaymentMethodId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PaymentNote")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaymentStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("UnPaidAmount")
+                        .HasColumnType("decimal(18,0)");
+
+                    b.HasKey("PaymentId");
+
+                    b.HasIndex("BookTourId");
+
+                    b.HasIndex("PaymentMethodId");
+
+                    b.ToTable("Payments");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.PaymentMethod", b =>
+                {
+                    b.Property<int>("PaymentMethodId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentMethodId"));
+
+                    b.Property<string>("PaymentMethodName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PaymentMethodId");
+
+                    b.ToTable("PaymentMethods");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Region", b =>
+                {
+                    b.Property<int>("RegionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RegionId"));
+
+                    b.Property<string>("RegionName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RegionId");
+
+                    b.ToTable("Regions");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Review", b =>
+                {
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("TourId")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.HasKey("AppUserId", "TourId");
+
+                    b.HasIndex("TourId");
+
+                    b.ToTable("Reviews");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Tour", b =>
+                {
+                    b.Property<string>("TourId")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("AdvanceDeposit")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Days")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DepartureLocationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DestinationLocationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Finished")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaxPeople")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MeetingPoint")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("SingleRoomPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("TourName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Vehicle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TourId");
+
+                    b.HasIndex("DepartureLocationId");
+
+                    b.HasIndex("DestinationLocationId");
+
+                    b.HasIndex("ImageId");
+
+                    b.ToTable("Tours");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.TourImage", b =>
+                {
+                    b.Property<string>("TourId")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TourId", "ImageId");
+
+                    b.HasIndex("ImageId");
+
+                    b.ToTable("TourImages");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.TourTypes", b =>
+                {
+                    b.Property<int>("TourTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TourTypeId"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PercentPrice")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TourTypeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TourTypeId");
+
+                    b.ToTable("TourTypes");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -305,6 +686,226 @@ namespace be_booktour.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("be_booktour.Models.BookTour", b =>
+                {
+                    b.HasOne("be_booktour.Models.AppUser", null)
+                        .WithMany("BookTours")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("be_booktour.Models.Tour", "Tour")
+                        .WithMany("BookTours")
+                        .HasForeignKey("TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("be_booktour.Models.TourTypes", "TourType")
+                        .WithMany("BookTours")
+                        .HasForeignKey("TourTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tour");
+
+                    b.Navigation("TourType");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.DepartureDate", b =>
+                {
+                    b.HasOne("be_booktour.Models.Tour", "Tour")
+                        .WithMany("DepartureDates")
+                        .HasForeignKey("TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tour");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Itinerary", b =>
+                {
+                    b.HasOne("be_booktour.Models.Tour", "Tour")
+                        .WithMany("Itineraries")
+                        .HasForeignKey("TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tour");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Location", b =>
+                {
+                    b.HasOne("be_booktour.Models.Region", "Region")
+                        .WithMany("Locations")
+                        .HasForeignKey("RegionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Region");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.PassengerInfomation", b =>
+                {
+                    b.HasOne("be_booktour.Models.BookTour", "BookTour")
+                        .WithMany("PassengerInfomations")
+                        .HasForeignKey("BookTourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("be_booktour.Models.PassengerType", "PassengerType")
+                        .WithMany("PassengerInfomations")
+                        .HasForeignKey("PassengerTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BookTour");
+
+                    b.Navigation("PassengerType");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Payment", b =>
+                {
+                    b.HasOne("be_booktour.Models.BookTour", "BookTour")
+                        .WithMany("Payments")
+                        .HasForeignKey("BookTourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("be_booktour.Models.PaymentMethod", "PaymentMethod")
+                        .WithMany("Payments")
+                        .HasForeignKey("PaymentMethodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BookTour");
+
+                    b.Navigation("PaymentMethod");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Review", b =>
+                {
+                    b.HasOne("be_booktour.Models.AppUser", "AppUser")
+                        .WithMany("Reviews")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("be_booktour.Models.Tour", "Tour")
+                        .WithMany("Reviews")
+                        .HasForeignKey("TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Tour");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Tour", b =>
+                {
+                    b.HasOne("be_booktour.Models.Location", "DepartureLocation")
+                        .WithMany("DepartureTours")
+                        .HasForeignKey("DepartureLocationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("be_booktour.Models.Location", "DestinationLocation")
+                        .WithMany("DestinationTours")
+                        .HasForeignKey("DestinationLocationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("be_booktour.Models.Image", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DepartureLocation");
+
+                    b.Navigation("DestinationLocation");
+
+                    b.Navigation("Image");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.TourImage", b =>
+                {
+                    b.HasOne("be_booktour.Models.Image", "Image")
+                        .WithMany("TourImages")
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("be_booktour.Models.Tour", "Tour")
+                        .WithMany("TourImages")
+                        .HasForeignKey("TourId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Image");
+
+                    b.Navigation("Tour");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.AppUser", b =>
+                {
+                    b.Navigation("BookTours");
+
+                    b.Navigation("Reviews");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.BookTour", b =>
+                {
+                    b.Navigation("PassengerInfomations");
+
+                    b.Navigation("Payments");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Image", b =>
+                {
+                    b.Navigation("TourImages");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Location", b =>
+                {
+                    b.Navigation("DepartureTours");
+
+                    b.Navigation("DestinationTours");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.PassengerType", b =>
+                {
+                    b.Navigation("PassengerInfomations");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.PaymentMethod", b =>
+                {
+                    b.Navigation("Payments");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Region", b =>
+                {
+                    b.Navigation("Locations");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.Tour", b =>
+                {
+                    b.Navigation("BookTours");
+
+                    b.Navigation("DepartureDates");
+
+                    b.Navigation("Itineraries");
+
+                    b.Navigation("Reviews");
+
+                    b.Navigation("TourImages");
+                });
+
+            modelBuilder.Entity("be_booktour.Models.TourTypes", b =>
+                {
+                    b.Navigation("BookTours");
                 });
 #pragma warning restore 612, 618
         }

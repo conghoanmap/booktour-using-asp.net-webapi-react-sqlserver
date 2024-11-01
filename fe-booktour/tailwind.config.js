@@ -5,8 +5,19 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      height:{
+        '102': '24rem',
+        '122': '30rem',
+      }
+    },
+    fontFamily: {
+      poppins: ["Poppins", "sans-serif"],
+      quicksand: ["Quicksand", "sans-serif"],
+    }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
 

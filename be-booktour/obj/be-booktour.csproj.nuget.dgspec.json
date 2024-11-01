@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ADMIN\\Documents\\Me\\React\\booktour\\be-booktour\\be-booktour.csproj": {}
+    "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\be-booktour.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ADMIN\\Documents\\Me\\React\\booktour\\be-booktour\\be-booktour.csproj": {
+    "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\be-booktour.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADMIN\\Documents\\Me\\React\\booktour\\be-booktour\\be-booktour.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\be-booktour.csproj",
         "projectName": "be-booktour",
-        "projectPath": "C:\\Users\\ADMIN\\Documents\\Me\\React\\booktour\\be-booktour\\be-booktour.csproj",
+        "projectPath": "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\be-booktour.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADMIN\\Documents\\Me\\React\\booktour\\be-booktour\\obj\\",
+        "outputPath": "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,6 +50,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.8, )"

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4zn/sN+lfgc=",
+  "dgSpecHash": "9N2CkQLb43I=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ADMIN\\Documents\\Me\\React\\booktour\\be-booktour\\be-booktour.csproj",
+  "projectFilePath": "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\be-booktour.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ADMIN\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

@@ -8,12 +8,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using be_booktour.Mappers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(typeof(MapperProfile)); // Khai báo AutoMapper
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -104,15 +106,21 @@ builder.Services.AddAuthentication(options =>
 // builder.Services.AddScoped<ICartRepository, CartService>();
 builder.Services.AddScoped<IAccountRepository, AccountService>();
 builder.Services.AddScoped<ITokenRepository, TokenSerivce>();
+builder.Services.AddScoped<IImageRepository, ImageService>();
+builder.Services.AddScoped<ITourRepository, TourService>();
+builder.Services.AddScoped<IBookingRepository, BookingService>();
+builder.Services.AddScoped<ILocationRepository, LocationService>();
+builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddScoped<IPaymentRepository, PaymentService>();
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("ReactApp", policyBuilder =>
     {
-        policyBuilder.WithOrigins("http://localhost:4000");
+        policyBuilder.WithOrigins("http://localhost:1000");
         policyBuilder.AllowAnyMethod();
         policyBuilder.AllowAnyHeader();
-        policyBuilder.AllowAnyOrigin();
+        policyBuilder.AllowCredentials();
     });
 });
 
@@ -124,6 +132,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseStaticFiles(); // Để sử dụng wwwroot và xem hình ảnh được tải lên trên đó
 
 app.UseHttpsRedirection();
 app.MapControllers();

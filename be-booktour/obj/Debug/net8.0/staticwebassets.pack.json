@@ -1,0 +1,65 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\wwwroot\\images\\20241005185851_phuyen.jpg",
+      "PackagePath": "staticwebassets\\images\\20241005185851_phuyen.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\wwwroot\\images\\20241005195807_phuyen8.jpg",
+      "PackagePath": "staticwebassets\\images\\20241005195807_phuyen8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\wwwroot\\images\\20241005195829_phuyen7.jpg",
+      "PackagePath": "staticwebassets\\images\\20241005195829_phuyen7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\wwwroot\\images\\20241005200803_phuyen6.jpg",
+      "PackagePath": "staticwebassets\\images\\20241005200803_phuyen6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\wwwroot\\images\\20241005200805_phuyen5.jpg",
+      "PackagePath": "staticwebassets\\images\\20241005200805_phuyen5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\wwwroot\\images\\20241005200853_phuyen2.jpg",
+      "PackagePath": "staticwebassets\\images\\20241005200853_phuyen2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\wwwroot\\images\\20241005200853_phuyen3.jpg",
+      "PackagePath": "staticwebassets\\images\\20241005200853_phuyen3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\wwwroot\\images\\20241005200853_phuyen4.jpg",
+      "PackagePath": "staticwebassets\\images\\20241005200853_phuyen4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\wwwroot\\images\\20241005201149_default.jpg",
+      "PackagePath": "staticwebassets\\images\\20241005201149_default.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\wwwroot\\images\\20241021173830_400585491_876874660513024_8073130479792759850_n.jpg",
+      "PackagePath": "staticwebassets\\images\\20241021173830_400585491_876874660513024_8073130479792759850_n.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Máy tính\\booktour\\be-booktour\\wwwroot\\images\\20241021173950_rest-api-model-1.png",
+      "PackagePath": "staticwebassets\\images\\20241021173950_rest-api-model-1.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.be-booktour.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.be-booktour.props",
+      "PackagePath": "build\\be-booktour.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.be-booktour.props",
+      "PackagePath": "buildMultiTargeting\\be-booktour.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.be-booktour.props",
+      "PackagePath": "buildTransitive\\be-booktour.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -3,6 +3,8 @@ using be_booktour.Models;
 using be_booktour.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using blueberry.Dtos.Account;
+using Microsoft.AspNetCore.Authorization;
+using be_booktour.Extensions;
 
 namespace be_booktour.Controllers
 {
@@ -28,7 +30,7 @@ namespace be_booktour.Controllers
                 {
                     return BadRequest(ModelState);
                 }
-                if(registerDto.Password != registerDto.ConfirmPassword)
+                if (registerDto.Password != registerDto.ConfirmPassword)
                 {
                     return BadRequest("Mật khẩu không khớp");
                 }
@@ -99,6 +101,49 @@ namespace be_booktour.Controllers
             {
                 return StatusCode(500, e);
             }
-        }   
+        }
+
+        [HttpGet("get-roles")]
+        [Authorize]
+        public async Task<IActionResult> GetRoles()
+        {
+            try
+            {
+                var user = User.GetUserName();
+                var appUser = await _accountRepository.FirstOrDefaultAsync(user);
+                var roles = await _accountRepository.GetRolesAsync(appUser);
+                return Ok(roles);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e);
+            }
+        }
+
+        [HttpPut("grant-authorize/{username}/{role}")]
+        public async Task<IActionResult> GrantAuthorize(string username, string role)
+        {
+            try
+            {
+                var user = await _accountRepository.FirstOrDefaultAsync(username);
+                if (user == null)
+                {
+                    return NotFound("Không tìm thấy tài khoản");
+                }
+                var result = await _accountRepository.AddToRoleAsync(user, role);
+                if (result.Succeeded)
+                {
+                    return Ok("Cấp quyền thành công");
+                }
+                else
+                {
+                    return StatusCode(500, result.Errors);
+                }
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e);
+            }
+        }
     }
 }
